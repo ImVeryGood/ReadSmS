@@ -16,7 +16,7 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BannerFragment extends BaseFragment<BannerPresenter> implements BannerView {
+public  class BannerFragment extends BaseFragment<BannerPresenter> implements BannerView {
 
 
     @BindView(R.id.image)
@@ -44,10 +44,18 @@ public class BannerFragment extends BaseFragment<BannerPresenter> implements Ban
     @Override
     public void showBanner(BannerBean bannerBean) {
         Picasso.with(getActivity())
-                .load(bannerBean.getData()
-                        .get((int) (Math.random()*3))
-                        .getImagePath())
-                .into(image);
+                .load(bannerBean.getData().get((int) (Math.random() * 3))
+                        .getImagePath()).into(image);
+    }
+
+    @Override
+    public void showProgress(long totalSize, long downSize) {
+
+    }
+
+    @Override
+    public void downSuccess(String path) {
+
     }
 
 }

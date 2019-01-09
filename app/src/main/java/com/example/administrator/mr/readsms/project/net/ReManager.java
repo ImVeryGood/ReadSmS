@@ -89,7 +89,7 @@ class CreateInterceptor implements Interceptor {
             } while (line != null);
 //            可在此处处理code不为200的情况
             if (true) {
-                Logger.e("url: " + request.url()+"\n"
+                Logger.d("url: " + request.url()+"\n"
                         +"response: " + sbJson.toString());
             } else {
 

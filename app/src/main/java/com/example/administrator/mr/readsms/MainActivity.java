@@ -15,6 +15,7 @@ import com.example.administrator.mr.readsms.project.net.ApiManager;
 import com.example.administrator.mr.readsms.project.net.MObserver;
 import com.example.administrator.mr.readsms.premission.RxPremissionActivity;
 import com.example.administrator.mr.readsms.project.service.WeatherService;
+import com.example.administrator.mr.readsms.utils.JumpUtils;
 import com.google.gson.Gson;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
@@ -62,7 +63,6 @@ public class MainActivity extends RxAppCompatActivity {
             }
         });
     }
-
 
 
     /**
@@ -278,7 +278,7 @@ public class MainActivity extends RxAppCompatActivity {
         });
     }
 
-    public void requext(View view) {
+    public void request(View view) {
         startActivity(new Intent(this, RxPremissionActivity.class));
     }
 
@@ -301,7 +301,7 @@ public class MainActivity extends RxAppCompatActivity {
 
 
     public void goToMvp(View view) {
-        startActivity(new Intent(this, BannerActivity.class));
+        JumpUtils.jump2Target(this, BannerActivity.class);
     }
 
 

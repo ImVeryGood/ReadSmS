@@ -10,4 +10,7 @@ public interface BannerView extends BaseView {
 
     void showBanner(BannerBean bannerBean);
 
+    void showProgress(long totalSize, long downSize);
+
+    void downSuccess(String path);
 }
