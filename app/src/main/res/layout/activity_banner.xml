@@ -28,7 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="删除" />
-
+    <Button
+        android:id="@+id/up_load"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="上传" />
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"

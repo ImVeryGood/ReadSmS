@@ -1,6 +1,8 @@
 package com.example.administrator.mr.readsms.feature.ui;
 
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +17,14 @@ import com.example.administrator.mr.readsms.project.downfile.DownModel;
 import com.example.administrator.mr.readsms.project.downfile.FileUtil;
 import com.example.administrator.mr.readsms.project.mvp.base.BaseActivity;
 import com.squareup.picasso.Picasso;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
 
-;
+
 
 public class BannerActivity extends BaseActivity<BannerPresenter> implements BannerView {
 
@@ -40,6 +45,7 @@ public class BannerActivity extends BaseActivity<BannerPresenter> implements Ban
 
     @Override
     public void onCreate() {
+        checkPremission();
         initFragment();
     }
 
@@ -73,7 +79,7 @@ public class BannerActivity extends BaseActivity<BannerPresenter> implements Ban
                 .commit();
     }
 
-    @OnClick({R.id.data, R.id.test, R.id.delete})
+    @OnClick({R.id.data, R.id.test, R.id.delete, R.id.up_load})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.data:
@@ -85,7 +91,22 @@ public class BannerActivity extends BaseActivity<BannerPresenter> implements Ban
             case R.id.delete:
                 FileUtil.delete(mPath);
                 break;
+            case R.id.up_load:
+                presenter.upLoad(mPath);
+                break;
         }
     }
 
+    @SuppressLint("CheckResult")
+    public void checkPremission() {
+        new RxPermissions(this).requestEach(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                .subscribe(new Consumer<Permission>() {
+                    @Override
+                    public void accept(Permission permission) throws Exception {
+
+                    }
+                });
+    }
 }

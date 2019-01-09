@@ -94,13 +94,10 @@ public class FileUtil {
         File file = null;
         try {
             file = new File(filePath);
-
             raf = new RandomAccessFile(filePath, "rw");
             inputStream = body.byteStream();
             byte[] fileReader = new byte[4096];
-
             raf.seek(start);
-
             while (true) {
                 int read = inputStream.read(fileReader);
                 if (read == -1) {
@@ -168,6 +165,7 @@ public class FileUtil {
      */
     public static boolean delete(String delFile) {
         File file = new File(delFile);
+        Log.d("SSSSSSS", "delete: "+file.exists());
         if (!file.exists()) {
             Log.d("SSSSSS", "delete: " + "删除文件失败:" + delFile + "不存在！");
             return false;
@@ -190,7 +188,7 @@ public class FileUtil {
         // 如果文件路径所对应的文件存在，并且是一个文件，则直接删除
         if (file.exists() && file.isFile()) {
             if (file.delete()) {
-                Log.e("--Method--", "Copy_Delete.deleteSingleFile: 删除单个文件" + filePath$Name + "成功！");
+                Log.d("SSSSSSSSSS", "Copy_Delete.deleteSingleFile: 删除单个文件" + filePath$Name + "成功！");
                 return true;
             } else {
                 Log.d("SSSSSSSSSS", "deleteSingleFile: " + "删除单个文件" + filePath$Name + "失败！");
