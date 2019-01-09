@@ -142,13 +142,10 @@ public class DownLoadManager {
                         downModel.setFinish(true);
                         downModel.setPath(path);
                         downModel.setExists(true);
-
-
                         if (fileCallback != null) {
                             fileCallback.onSuccess(path);
                         }
                         hashMap.remove(url);
-
                         currentUrl = null;
                     }
 

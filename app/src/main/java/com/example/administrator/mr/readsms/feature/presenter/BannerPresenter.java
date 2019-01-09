@@ -47,7 +47,7 @@ public class BannerPresenter extends BasePresenter<BannerView> {
     }
 
     public void downFile() {
-        String url = "https://github.com/ImVeryGood/MVpFin.git";
+        String url = ApkUtil.apkUrl;
         if (downModel == null) {
             downModel = new DownModel();
             downModel.setUrl(url);
@@ -67,7 +67,13 @@ public class BannerPresenter extends BasePresenter<BannerView> {
             @Override
             public void onProgress(long totalSize, long downSize) {
                 Log.d("SSSSSSSSS", "onProgress: downSize==" + downSize);
-                view.showProgress(totalSize, downSize);
+                if (downModel.getTotalSize() == 0) {
+                    downModel.setTotalSize(totalSize);
+                }
+                downModel.setCurrentTotalSize(totalSize);
+
+                downModel.setDownSize(downSize + downModel.getTotalSize() - downModel.getCurrentTotalSize());
+                view.showProgress(downModel);
             }
         });
     }

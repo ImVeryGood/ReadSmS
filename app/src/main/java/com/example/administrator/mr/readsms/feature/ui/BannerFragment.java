@@ -8,6 +8,7 @@ import com.example.administrator.mr.readsms.R;
 import com.example.administrator.mr.readsms.feature.bean.BannerBean;
 import com.example.administrator.mr.readsms.feature.presenter.BannerPresenter;
 import com.example.administrator.mr.readsms.feature.view.BannerView;
+import com.example.administrator.mr.readsms.project.downfile.DownModel;
 import com.example.administrator.mr.readsms.project.mvp.base.BaseFragment;
 import com.squareup.picasso.Picasso;
 
@@ -49,7 +50,7 @@ public  class BannerFragment extends BaseFragment<BannerPresenter> implements Ba
     }
 
     @Override
-    public void showProgress(long totalSize, long downSize) {
+    public void showProgress(DownModel downModel) {
 
     }
 

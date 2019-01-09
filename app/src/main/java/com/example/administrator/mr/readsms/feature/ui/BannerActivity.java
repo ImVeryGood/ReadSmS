@@ -11,6 +11,7 @@ import com.example.administrator.mr.readsms.R;
 import com.example.administrator.mr.readsms.feature.bean.BannerBean;
 import com.example.administrator.mr.readsms.feature.presenter.BannerPresenter;
 import com.example.administrator.mr.readsms.feature.view.BannerView;
+import com.example.administrator.mr.readsms.project.downfile.DownModel;
 import com.example.administrator.mr.readsms.project.downfile.FileUtil;
 import com.example.administrator.mr.readsms.project.mvp.base.BaseActivity;
 import com.squareup.picasso.Picasso;
@@ -55,13 +56,14 @@ public class BannerActivity extends BaseActivity<BannerPresenter> implements Ban
     }
 
     @Override
-    public void showProgress(long totalSize, long downSize) {
-        test.setText("已经下载" + downSize);
+    public void showProgress(DownModel downModel) {
+        int progress = (int) (downModel.getDownSize() * 100 / downModel.getTotalSize());
+        test.setText(progress + "%");
     }
 
     @Override
     public void downSuccess(String path) {
-        mPath=path;
+        mPath = path;
     }
 
     public void initFragment() {
